@@ -1,0 +1,69 @@
+:root {
+   --fontSize-padding-task:18px;
+}
+
+*{
+    box-sizing: border-box;
+    font-family: cursive;
+}
+ body{
+    background-color: rgb(161, 217, 6);
+    height: 100vh;
+ }
+ .to-do-container {
+    /* background-color: aqua; */
+    position: relative;
+    top:30%;
+    left:50%;
+    transform: translateX(-50%);
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    width:45%;
+    max-width:500px;
+    min-width: 300px;
+    box-shadow:0px 0px 8px 2px 
+    #717171;
+    border-radius: 12px 12px 0px 0px;
+
+ }
+ .to-do-container input{
+    width:100%;
+    padding:1em;
+    font-size: 20px;
+    border-radius: 12px 12px 0 0;
+    border:none;
+    
+
+}
+.to-do-container .item {
+   background-color: rgb(255, 247, 4);
+   width:100%;
+   display:flex;
+   justify-content: flex-start;
+   font-size: var(--fontSize-padding-task);
+   padding:1em;
+   position:relative;
+   border-top:dotted rgb(128, 128, 128);
+}
+.to-do-container .last-item {
+   border-radius: 0 0 12px 12px;
+}
+.to-do-container .fa-square-check{
+   color:rgb(0, 148, 0);
+}
+.to-do-container .fa-trash{
+   color:red;
+}
+.to-do-container-fill {/*a task is added*/
+   border-radius: 12px 12px 12px 12px;
+}
+.IconContainer {
+   position:absolute;
+   right:var(--fontSize-padding-task);
+}
+.task-completed {
+   text-decoration: line-through;
+   color:gray;
+}
