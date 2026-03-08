@@ -14,34 +14,35 @@
 body {
     min-height: 100vh;
     margin:0;
-    background-image: url(./assets/Images/Sunny.jpg);
+    background-image: url(./assets/Images/Sunny.webp);
     background-size: cover;
     background-attachment: fixed;
     background-position:center;
     background-repeat:no-repeat;
 
 
+
 }
 .bg-sunny {
-    background-image: url(./assets/Images/Sunny.jpg);
+    background-image: url(./assets/Images/Sunny.webp);
 }
 .bg-clear {
-    background-image: url(./assets/Images/Clear.jpg);
+    background-image: url(./assets/Images/Clear.webp);
 }
 .bg-cloudy {
-    background-image: url(./assets/Images/Cloudy.jpg);
+    background-image: url(./assets/Images/Cloudy.webp);
 }
 .bg-mist {
-    background-image: url(./assets/Images/Fog_Mist.jpg);
+    background-image: url(./assets/Images/Fog_Mist.webp);
 }
 .bg-rainy {
-    background-image: url(./assets/Images/Rainy.jpg);
+    background-image: url(./assets/Images/Rainy.webp);
 }
 .bg-snowy {
-    background-image: url(./assets/Images/Snowy.jpg);
+    background-image: url(./assets/Images/Snowy.webp);
 }
 .bg-thunder {
-    background-image: url(./assets/Images/Thunder.jpg);
+    background-image: url(./assets/Images/Thunder.webp);
 }
 .errorMessage{
     display: inline-block;
@@ -52,6 +53,9 @@ body {
 .WeatherAppContainer {
     /* background-color: rgba(172, 255, 47, 0.293); */
     padding: 0px 5%;
+    backdrop-filter: blur(2px);
+    color:white;
+    min-height: 100vh;
 
 }
 /* header */
@@ -162,6 +166,7 @@ body {
     flex-grow: 1;
     display:flex;
     align-items: center;
+    justify-content: center;
 }
 
 #Temp{
@@ -181,10 +186,11 @@ body {
     background-color: transparent;
     border:none;
     font-size: var(--mainInfo-font-size);
+    cursor:pointer;
     
 }
 .deactive-unit{
-    color:gray;
+    color:rgb(151, 151, 151);
 }
 #WeatherCondition {
     font-size: var(--mainInfo-font-size);
