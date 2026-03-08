@@ -7,8 +7,11 @@ const SearchBarContainer = document.getElementById("SearchIn-SearchBtn");
 const APIKey = "1ebc6bcbf4534de884f150541260203";
 const baseURL = "https://api.weatherapi.com/v1/forecast.json?"
 let WeatherData;
-window.addEventListener('load', (event) => {
-    loadWeatherData('Seoul');
+window.addEventListener('load', async function(event) {
+    await loadWeatherData('Alexandria');
+    document.getElementById('loader').classList.add('loader-hidden');
+    const WeatherContainer = document.getElementById("WeatherAppContainer");
+    WeatherContainer.classList.add("ShowWeatherAppContainer");
 });
 SearchBtn.addEventListener("click",searchBtnPressed);
 CelBtn.addEventListener("click",(event)=>{

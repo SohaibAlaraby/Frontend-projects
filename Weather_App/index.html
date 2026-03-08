@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="Weather_App.css">
 </head>
 <body>
+    <div id="loader">
+    <div class="spinner"></div> </div>
     <div id="WeatherAppContainer" class="WeatherAppContainer">
         <header id="WeatherAppHeader" class="WeatherAppHeader">
             <div id = "City-Country-Date-Time">
@@ -36,7 +38,7 @@
         <main id="WeatherAppMain" class="WeatherAppMain">
             <section id="MainInfo">
                 <div id="Temp-Units-WeatherCondition">
-                    <p id="Temp">23</p>
+                    <p id="Temp">--</p>
                     <div id="Units-WeatherCondition">
                         <div id="Units">
                             <button id="CelciusBtn">&deg;C</button>
@@ -50,7 +52,7 @@
 
                 </div>
                 <div id="WeatherIcon-ExtraWeatherInfo">
-                    <img src="./assets/Icons/sunny.png" alt="Weather State Icon" id="WeatherIcon">
+                    <img src="" alt="Weather State Icon" id="WeatherIcon">
                     <div id="ExtraWeatherInfo">
                         <p id="FeelsLike"><i class="fa-solid fa-temperature-quarter"></i> Feels like: <span id="FeelsLikeTemp">31&deg;C</span>
                         </p>
