@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Include font awesome icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <!-- Include Google roboto fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Include css styling -->
+    <link rel="stylesheet" href="Weather_App.css">
+</head>
+<body>
+    <div id="WeatherAppContainer" class="WeatherAppContainer">
+        <header id="WeatherAppHeader" class="WeatherAppHeader">
+            <div id = "City-Country-Date-Time">
+                <p id="City">alexandria</p> 
+                <p id="Country">Egypt</p>
+                <p id = "Date-Time"><span id="Date">thursday, 31 august 2023</span> | <span id="Time">10:15 PM</span></p>
+            </div>
+            <div id="SearchIn-SearchBtn-LocationBtn">
+                <div id="SearchIn-SearchBtn" class="SearchIn-SearchBtn">
+                    <input type="search" id="SearchIn" placeholder="Enter city name">
+                    <button id="SearchBtn">search</button>
+                </div>
+                <button id="LocationBtn"><i class="fa-solid fa-location-crosshairs"></i></button>
+            </div>
+        </header>
 
+        <main id="WeatherAppMain" class="WeatherAppMain">
+            <section id="MainInfo">
+                <div id="Temp-Units-WeatherCondition">
+                    <p id="Temp">23</p>
+                    <div id="Units-WeatherCondition">
+                        <div id="Units">
+                            <button id="CelciusBtn">&deg;C</button>
+                            <span> | </span>
+                            <button id="FahrenheitBtn" class="deactive-unit">&deg;F</button>
+                        </div>
+                        
+                        <p id="WeatherCondition">partly cloudy</p>
+                    </div>
+                    
+
+                </div>
+                <div id="WeatherIcon-ExtraWeatherInfo">
+                    <img src="./assets/Icons/sunny.png" alt="Weather State Icon" id="WeatherIcon">
+                    <div id="ExtraWeatherInfo">
+                        <p id="FeelsLike"><i class="fa-solid fa-temperature-quarter"></i> Feels like: <span id="FeelsLikeTemp">31&deg;C</span>
+                        </p>
+                        <p id="MaxMinTemp"><i class="fa-solid fa-arrow-down-long fa-flip-vertical"></i><span id="MaxTemp">19</span>&deg; / <i class="fa-solid fa-arrow-down-long"></i><span id="MinTemp">11</span>&deg;</p>
+
+                        <p id="Humidity"><i class="fa-solid fa-droplet"></i> Humidity: <span id="HumidityPercent">15</span>%
+                        </p>
+
+                        <p id="Wind"><i class="fa-solid fa-wind"></i> Wind: <span id="WindSpeed">14 km/h</span>
+                        , <span id = "windDirection">East</span></p>
+
+                    </div>
+                </div>
+            </section>
+            <section id="TodayDetailedInfo"></section>
+            <section id="NextDaysPrediction"></section>
+        </main>
+    </div>
+    <script src = "Weather_App.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+:root {
+    --page-padding:20px;
+    --input-padding:16px;
+    --mainInfo-font-size:40px;
+    --document-font-color:rgb(255, 255, 255);
+
+}
+*{
+    box-sizing: border-box;
+    color:var(--document-font-color);
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    margin:0;
+    background-image: url(./assets/Images/Sunny.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position:center;
+    background-repeat:no-repeat;
+
+
+}
+.bg-sunny {
+    background-image: url(./assets/Images/Sunny.jpg);
+}
+.bg-clear {
+    background-image: url(./assets/Images/Clear.jpg);
+}
+.bg-cloudy {
+    background-image: url(./assets/Images/Cloudy.jpg);
+}
+.bg-mist {
+    background-image: url(./assets/Images/Fog_Mist.jpg);
+}
+.bg-rainy {
+    background-image: url(./assets/Images/Rainy.jpg);
+}
+.bg-snowy {
+    background-image: url(./assets/Images/Snowy.jpg);
+}
+.bg-thunder {
+    background-image: url(./assets/Images/Thunder.jpg);
+}
+.errorMessage{
+    display: inline-block;
+    color: red;
+    background-color: white;
+}
+
+.WeatherAppContainer {
+    /* background-color: rgba(172, 255, 47, 0.293); */
+    padding: 0px 5%;
+
+}
+/* header */
+.WeatherAppHeader{
+    /* background-color: rgb(0, 87, 186); */
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#City-Country-Date-Time {
+    width:50%;
+    flex-grow:1;
+}
+#City {
+    font-size: 60px;
+    text-transform: capitalize;
+    margin-bottom:0px;
+    font-weight: 800;
+
+}
+#Country {
+    font-size: 40px;
+    text-transform: capitalize;
+    margin:0px;
+    font-weight: 600;
+
+}
+#Date-Time {
+    font-size:18px;
+}
+#Date {
+    text-transform: capitalize;
+}
+#SearchIn-SearchBtn-LocationBtn {
+    width: 50%;
+    min-width: 300px;
+    display:flex;
+    flex-grow:1;
+    
+}
+.WeatherAppHeader .SearchIn-SearchBtn {
+    position:relative;
+    margin-right:10px;
+    flex-grow:1;
+    
+}
+#SearchIn {
+    width:100%;
+    min-width: 320px;
+    padding:var(--input-padding);
+    border:none;
+    border-radius: 8px;
+    /* height:100%; */
+    color:black;
+    font-size: 16px;
+}
+#SearchIn::placeholder {
+    color:gray;
+}
+#SearchIn:focus::placeholder {
+    color:transparent;
+    transition: 0.3s;
+}
+#SearchBtn {
+    padding:var(--input-padding) Calc(2 * var(--input-padding));
+    /* height:100%; */
+    font-size: 16px;
+    background-color: #15249C;
+    border:none;
+    border-radius: 8px;
+    position:absolute;
+    right:0;
+    top:0;
+    text-transform: capitalize;
+    cursor:pointer;
+}
+#LocationBtn{     
+    height:100%;
+    align-self: stretch;
+    padding: var(--input-padding);
+    aspect-ratio: 1 / 1;
+   
+    flex-shrink: 0;     
+    font-size: 16px;
+    background-color: #15249C;
+    border: none;
+    border-radius: 8px;
+    display: flex;     
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+}
+#LocationBtn:hover, #SearchBtn:hover {
+    background-color: blue;
+}
+/* Main */
+/* main information section */
+#MainInfo {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap:wrap;
+}
+
+#Temp-Units-WeatherCondition{
+    width:50%;
+    flex-grow: 1;
+    display:flex;
+    align-items: center;
+}
+
+#Temp{
+    font-size: 130px;
+    margin-right: 15px;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    
+}
+#Units{
+    font-size: var(--mainInfo-font-size);
+    display: flex;
+    flex-wrap:nowrap;
+    
+}
+#CelciusBtn,#FahrenheitBtn {
+    background-color: transparent;
+    border:none;
+    font-size: var(--mainInfo-font-size);
+    
+}
+.deactive-unit{
+    color:gray;
+}
+#WeatherCondition {
+    font-size: var(--mainInfo-font-size);
+    text-transform: capitalize;
+    margin: 0;
+}
+
+/* extra information section */
+#WeatherIcon-ExtraWeatherInfo {
+    width:50%;
+    min-width: 374px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-evenly;
+
+    
+}
+#ExtraWeatherInfo {
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
+   
+}
+#ExtraWeatherInfo p{
+   margin: 0.25em;
+   font-size: 20px;
+}
+#WeatherIcon {
+    
+    width:25%;
+    min-width: 200px;
+    /* to prevent vertical stretch if window ratio changes */
+    align-self:center;
+    flex-shrink: 0;
+}
