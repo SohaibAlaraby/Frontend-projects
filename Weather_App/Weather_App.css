@@ -19,6 +19,7 @@ body {
     background-attachment: fixed;
     background-position:center;
     background-repeat:no-repeat;
+    transition: background-image 0.5s ease-in-out;
 
 
 
@@ -44,6 +45,7 @@ body {
 .bg-thunder {
     background-image: url(./assets/Images/Thunder.webp);
 }
+
 .errorMessage{
     display: inline-block;
     color: red;
@@ -52,14 +54,40 @@ body {
 #loader {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: #1e1e1e; 
+    background: #f4f7f6; 
     display: flex; justify-content: center; align-items: center;
     z-index: 9999;
     transition: opacity 0.5s ease; 
 }
-.loader-hidden {
-    opacity: 0;
-    pointer-events: none;
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #e0e0e0;
+    border-top: 5px solid #3498db;
+    border-radius:50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.hidden {
+    display: none !important;
+    /* pointer-events: none; */
+}
+.TryAgain {
+    padding:var(--input-padding) Calc(2 * var(--input-padding));
+    /* height:100%; */
+    font-size: 16px;
+    background-color: #3447d2;
+    border:none;
+    border-radius: 8px;
+    text-transform: capitalize;
+    cursor:pointer;
 }
 .WeatherAppContainer {
     /* background-color: rgba(172, 255, 47, 0.293); */
@@ -67,10 +95,10 @@ body {
     backdrop-filter: blur(2px);
     color:white;
     min-height: 100vh;
-    opacity: 0;
-}
-.ShowWeatherAppContainer{
-    opacity:1;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:65px;
 }
 /* header */
 .WeatherAppHeader{
@@ -168,7 +196,13 @@ body {
 }
 /* Main */
 /* main information section */
+#WeatherAppMain{
+    display:flex;
+    flex-wrap: wrap;
+    gap:65px;
+}
 #MainInfo {
+    width:100%;
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -186,8 +220,10 @@ body {
 #Temp{
     font-size: 130px;
     margin-right: 15px;
-    margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
+    /* margin-block-start: 0.5em; */
+    /* margin-block-end: 0.5em; */
+    margin-block-start: 0px;
+    margin-block-end: 0px;
     
 }
 #Units{
@@ -239,4 +275,90 @@ body {
     /* to prevent vertical stretch if window ratio changes */
     align-self:center;
     flex-shrink: 0;
+}
+
+#TodayDetailedInfoContainer, #NextDaysPredictionContainer{
+    background-color: rgba(255, 255, 255, 0.263);
+    width:40%;
+    min-width: 350px; 
+    display:inline;
+    padding:28px 18px;
+    flex-grow: 1;
+    border-radius: 16px;
+}
+
+#TodayDetailedInfoContainer h3, #NextDaysPredictionContainer h3, #UVIndex h3 {
+    text-transform: capitalize;
+    font-weight: 400;
+    margin-top:0;
+}
+
+#TodayDetailedInfo, #NextDaysPrediction{
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior:smooth;
+    gap:8px;
+}
+
+#TodayDetailedInfo .HourByHourInfo, #NextDaysPrediction .DayByDayInfo{
+    background-color: #030060;
+    padding:16px;
+    border-radius: 16px;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    gap:8px;
+}
+#NextDaysPrediction{
+    justify-content: center;
+    width:auto;
+}
+#NextDaysPrediction .DayByDayInfo{
+    width:30%;
+    
+}
+#UVIndex{
+    background-color: rgba(255, 255, 255, 0.263);
+    width:30%;
+    min-width: 350px;
+    padding:36px 18px;
+    border-radius: 16px;
+    flex-grow:1;
+    display: inline;
+}
+#UVIndex h3{
+    display:flex;
+    align-items: center;
+    gap: 4px;
+}
+#UVIndex p{
+    text-transform: capitalize;
+    font-size: 28px;
+    font-weight: 500;
+}
+#UVBar {
+    width:100%;
+    height: 16px;
+    border-radius: 8px;
+    background-image: linear-gradient(90deg,
+        #289500 0%,    /* Low */
+        #f7e400 25%,   /* Moderate */
+        #f85900 50%,   /* High */
+        #d8001d 75%,   /* Very High */
+        #6b49c8 100%   /* Extreme */);
+    position:relative;
+}
+#UVPointer{
+    width:24px;
+    height:24px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    position:absolute;
+    left:0%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    border:2px solid white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }

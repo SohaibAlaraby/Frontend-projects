@@ -13,18 +13,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Include Google Icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=wb_sunny" />
     <!-- Include css styling -->
     <link rel="stylesheet" href="Weather_App.css">
 </head>
 <body>
     <div id="loader">
-    <div class="spinner"></div> </div>
-    <div id="WeatherAppContainer" class="WeatherAppContainer">
+        <div id ="spinner" class="spinner"></div> 
+        <button id="TryAgain" class="TryAgain hidden">Try Again<i class="fa-solid fa-arrows-rotate"></i></button>
+    </div>
+    <div id="WeatherAppContainer" class="WeatherAppContainer hideWeatherAppContainer">
         <header id="WeatherAppHeader" class="WeatherAppHeader">
             <div id = "City-Country-Date-Time">
-                <p id="City">alexandria</p> 
-                <p id="Country">Egypt</p>
-                <p id = "Date-Time"><span id="Date">thursday, 31 august 2023</span> | <span id="Time">10:15 PM</span></p>
+                <p id="City">Anonymous City</p> 
+                <p id="Country">Anonymous Country</p>
+                <p id = "Date-Time"><span id="Date">No Date</span> | <span id="Time">No Time</span></p>
             </div>
             <div id="SearchIn-SearchBtn-LocationBtn">
                 <div id="SearchIn-SearchBtn" class="SearchIn-SearchBtn">
@@ -46,7 +50,7 @@
                             <button id="FahrenheitBtn" class="deactive-unit">&deg;F</button>
                         </div>
                         
-                        <p id="WeatherCondition">partly cloudy</p>
+                        <p id="WeatherCondition">Unknown</p>
                     </div>
                     
 
@@ -54,21 +58,36 @@
                 <div id="WeatherIcon-ExtraWeatherInfo">
                     <img src="" alt="Weather State Icon" id="WeatherIcon">
                     <div id="ExtraWeatherInfo">
-                        <p id="FeelsLike"><i class="fa-solid fa-temperature-quarter"></i> Feels like: <span id="FeelsLikeTemp">31&deg;C</span>
+                        <p id="FeelsLike"><i class="fa-solid fa-temperature-quarter"></i> Feels like: <span id="FeelsLikeTemp">--&deg;C</span>
                         </p>
-                        <p id="MaxMinTemp"><i class="fa-solid fa-arrow-down-long fa-flip-vertical"></i><span id="MaxTemp">19</span>&deg; / <i class="fa-solid fa-arrow-down-long"></i><span id="MinTemp">11</span>&deg;</p>
+                        <p id="MaxMinTemp"><i class="fa-solid fa-arrow-down-long fa-flip-vertical"></i><span id="MaxTemp">--</span>&deg; / <i class="fa-solid fa-arrow-down-long"></i><span id="MinTemp">--</span>&deg;</p>
 
-                        <p id="Humidity"><i class="fa-solid fa-droplet"></i> Humidity: <span id="HumidityPercent">15</span>%
+                        <p id="Humidity"><i class="fa-solid fa-droplet"></i> Humidity: <span id="HumidityPercent">--</span>%
                         </p>
 
-                        <p id="Wind"><i class="fa-solid fa-wind"></i> Wind: <span id="WindSpeed">14 km/h</span>
-                        , <span id = "windDirection">East</span></p>
+                        <p id="Wind"><i class="fa-solid fa-wind"></i> Wind: <span id="WindSpeed">-- km/h</span>
+                        , <span id = "windDirection">--</span></p>
 
                     </div>
                 </div>
             </section>
-            <section id="TodayDetailedInfo"></section>
-            <section id="NextDaysPrediction"></section>
+            <section id="TodayDetailedInfoContainer">
+                <h3>today</h3>
+                <section id="TodayDetailedInfo"></section>
+            </section>
+            <section id="NextDaysPredictionContainer">
+                <h3>daily forcast</h3>
+                <section id="NextDaysPrediction"></section>
+            </section>
+            <section id="UVIndex">
+                <h3><span class="material-symbols-outlined">wb_sunny</span>UV index</h3>
+                <p id="UVIndexDescribtion">low</p>
+                <div id="UVBar">
+                    <div id="UVPointer">0</div>
+                </div>
+                
+            </section>
+
         </main>
     </div>
     <script src = "Weather_App.js"></script>
