@@ -3,6 +3,8 @@
     --input-padding:16px;
     --mainInfo-font-size:40px;
     --document-font-color:rgb(255, 255, 255);
+    --WeatherAppMain-gap: 24px;
+    --WeatherAppContainer-gap: 65px;
 
 }
 *{
@@ -98,7 +100,7 @@ body {
     display:flex;
     flex-direction: column;
     justify-content: center;
-    gap:65px;
+    gap: var(--WeatherAppContainer-gap);
 }
 /* header */
 .WeatherAppHeader{
@@ -199,7 +201,7 @@ body {
 #WeatherAppMain{
     display:flex;
     flex-wrap: wrap;
-    gap:65px;
+    gap:var(--WeatherAppMain-gap);
 }
 #MainInfo {
     width:100%;
@@ -207,6 +209,7 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap:wrap;
+    margin-bottom:calc(var(--WeatherAppContainer-gap) - var(--WeatherAppMain-gap));
 }
 
 #Temp-Units-WeatherCondition{
@@ -278,16 +281,19 @@ body {
 }
 
 #TodayDetailedInfoContainer, #NextDaysPredictionContainer{
-    background-color: rgba(255, 255, 255, 0.263);
-    width:40%;
+    background-color: rgba(255, 255, 255, 0.123);
+    width:30%;
     min-width: 350px; 
     display:inline;
     padding:28px 18px;
     flex-grow: 1;
     border-radius: 16px;
 }
+#TodayDetailedInfoContainer {
+    width: 55%;
+}
 
-#TodayDetailedInfoContainer h3, #NextDaysPredictionContainer h3, #UVIndex h3 {
+#TodayDetailedInfoContainer h3, #NextDaysPredictionContainer h3, #UVIndex h3, #HumiditySection h3, #VisibilitySection h3, #DewPointSection h3{
     text-transform: capitalize;
     font-weight: 400;
     margin-top:0;
@@ -309,6 +315,11 @@ body {
     flex-direction: column;
     gap:8px;
 }
+.centerVertically{
+    display:flex;
+    align-items: center;
+    flex-wrap:wrap;
+}
 #NextDaysPrediction{
     justify-content: center;
     width:auto;
@@ -317,29 +328,40 @@ body {
     width:30%;
     
 }
-#UVIndex{
-    background-color: rgba(255, 255, 255, 0.263);
+#UVIndex, #HumiditySection, #VisibilitySection, #DewPointSection{
+    background-color: rgba(255, 255, 255, 0.123);
     width:30%;
-    min-width: 350px;
+    min-width: 300px;
     padding:36px 18px;
     border-radius: 16px;
     flex-grow:1;
-    display: inline;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
 }
-#UVIndex h3{
+#UVIndex h3, #HumiditySection h3, #VisibilitySection h3,#DewPointSection h3{
     display:flex;
     align-items: center;
     gap: 4px;
 }
-#UVIndex p{
+#UVIndex p, #HumiditySection p{
     text-transform: capitalize;
     font-size: 28px;
     font-weight: 500;
 }
-#UVBar {
+#VisibilitySection p, #DewPointSection p{
+    font-size: 56px;
+    font-weight: 500;
+    margin:0;
+}
+#UVBar, #HumidityBar1{
     width:100%;
-    height: 16px;
-    border-radius: 8px;
+    height: 20px;
+    border-radius: 16px;
+}
+#UVBar {
+    
     background-image: linear-gradient(90deg,
         #289500 0%,    /* Low */
         #f7e400 25%,   /* Moderate */
@@ -348,17 +370,26 @@ body {
         #6b49c8 100%   /* Extreme */);
     position:relative;
 }
+#HumidityBar1 {
+    background-color: white;
+}
+#HumidityBar2{
+    height: 20px;
+    border-radius: 16px;
+    background-color: rgb(0, 217, 255);
+}
 #UVPointer{
-    width:24px;
-    height:24px;
+    width:36px;
+    height:36px;
     aspect-ratio: 1/1;
     border-radius: 50%;
     position:absolute;
     left:0%;
     top:50%;
     transform: translate(-50%,-50%);
-    border:2px solid white;
+    border:4px solid white;
     display:flex;
     justify-content: center;
     align-items: center;
 }
+

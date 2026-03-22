@@ -23,12 +23,16 @@ CelBtn.addEventListener("click",(event)=>{
     updateExtraWeatherInfo(WeatherData, true);
     createHourlyBar(WeatherData.forecast,true);
     createDaysBar(WeatherData.forecast, true);
+    updateVisibilitySection(WeatherData, true);
+    updateDewPointSection(WeatherData, true);
 });
 FahBtn.addEventListener("click",(event)=>{
     updateTempAndWeatherCondition(WeatherData.current,false);
     updateExtraWeatherInfo(WeatherData, false);
     createHourlyBar(WeatherData.forecast,false);
     createDaysBar(WeatherData.forecast, false);
+    updateVisibilitySection(WeatherData, false);
+    updateDewPointSection(WeatherData, false);
 });
 SearchInput.addEventListener("input",handleInput);
 
@@ -252,6 +256,9 @@ function updateWeatherDataInUI(data){
         createHourlyBar(data.forecast,true);
         createDaysBar(data.forecast, true);
         updateUVIndex(data);
+        updateHumiditySection(data);
+        updateVisibilitySection(data, true);
+        updateDewPointSection(data, true);
     }catch(error) {
         console.error("UI update error:",error);
     }
@@ -319,7 +326,7 @@ function createHourlyBar({forecastday:[{hour:hourArr}]},isCel){
             <span>${Time}</span>
             <img src="https://${hour.condition.icon}" alt="${hour.condition.text}">
             <span>${isCel?hour.temp_c:hour.temp_f}°</span>
-            <span><i class="fa-solid fa-droplet"></i> ${hour.humidity}%</span>
+            <span class="centerVertically"><span class="material-symbols-outlined">humidity_high</span> ${hour.humidity}%</span>
         </div>
         `
     }).join('');
@@ -337,8 +344,8 @@ function createDaysBar({forecastday}, isCel) {
         <div class="DayByDayInfo" data-day-index =${index} >
             <span>${dayName}</span>
             <img src="https://${day.day.condition.icon}" alt="${day.day.condition.text}">
-            <span><i class="fa-solid fa-arrow-down-long fa-flip-vertical"></i> ${maxtemp}° / <i class="fa-solid fa-arrow-down-long"></i> ${mintemp}°</span>
-            <span><i class="fa-solid fa-droplet"></i> ${humidity}%</span>
+            <span class="centerVertically"><span class="material-symbols-outlined">north</span> ${maxtemp}° <span class="material-symbols-outlined">south</span> ${mintemp}°</span>
+            <span class="centerVertically"><span class="material-symbols-outlined">humidity_high</span> ${humidity}%</span>
         </div>
         ` 
     }).join('');
@@ -349,20 +356,20 @@ function updateUVIndex({current:{uv:UVIndex}}){
     //{current:{uv:UVIndex}}
     const UVdescription = document.getElementById("UVIndexDescribtion");
     const UVPointer = document.getElementById("UVPointer");
-    UVPointer.textContent = UVIndex;
+    UVPointer.textContent = UVIndex.toFixed(1);
     let percentage = (UVIndex/11)*100;
     percentage = percentage>100? 100 : percentage;   
     UVPointer.style.left = `${percentage}%`;
-    if(0 <= UVIndex && 2 >= UVIndex) {
+    if(0 <= UVIndex && 3 > UVIndex) {
         UVdescription.textContent = "low";
         UVPointer.style.backgroundColor = '#289500';
-    } else if(3 <= UVIndex && 5 >= UVIndex) {
+    } else if(3 <= UVIndex && 6 > UVIndex) {
         UVdescription.textContent = "moderate";
         UVPointer.style.backgroundColor = '#f7e400';
-    } else if(6 <= UVIndex && 7 >= UVIndex) {
+    } else if(6 <= UVIndex && 8 > UVIndex) {
         UVdescription.textContent = "high";
         UVPointer.style.backgroundColor = '#f85900';
-    } else if(8 <= UVIndex && 10 >= UVIndex) {
+    } else if(8 <= UVIndex && 11 > UVIndex) {
         UVdescription.textContent = "very high";
         UVPointer.style.backgroundColor = '#d8001d';
     } else if(11 <= UVIndex) {
@@ -371,5 +378,29 @@ function updateUVIndex({current:{uv:UVIndex}}){
     } else {
         const UVIndexContainer= document.getElementById("UVIndex");
         UVIndexContainer.style.display = "none";
-    }
+    } 
+    
+}
+
+function updateHumiditySection({current:{humidity}}){
+    const HumidityValue = document.getElementById("HumidityDescription");
+    const HumidityBar= document.getElementById("HumidityBar2");
+    HumidityValue.textContent = `${humidity}%`;
+    HumidityBar.style.width = `${humidity}%`
+    HumidityBar.setAttribute('aria-valuenow', humidity);
+    
+}
+
+function updateVisibilitySection({current:{vis_km,vis_miles}}, isCel){
+    const VisibilityValue = document.getElementById("VisibilityDescription");
+    const value = isCel ? vis_km : vis_miles;
+    const unit = isCel ? "km" : "miles";
+    VisibilityValue.textContent = `${value} ${unit}`;
+}
+
+function updateDewPointSection({current:{dewpoint_c,dewpoint_f}}, isCel){
+    const DewPointValue = document.getElementById("DewPointDescription");
+    const value = isCel ? dewpoint_c : dewpoint_f;
+    const unit = isCel ? "°C" : "°F";
+    DewPointValue.textContent = `${value} ${unit}`;
 }
