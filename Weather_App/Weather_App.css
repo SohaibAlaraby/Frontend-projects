@@ -5,6 +5,7 @@
     --document-font-color:rgb(255, 255, 255);
     --WeatherAppMain-gap: 24px;
     --WeatherAppContainer-gap: 65px;
+    --WeatherCard-color:rgba(0, 0, 0, 0.247);
 
 }
 *{
@@ -57,7 +58,11 @@ body {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     background: #f4f7f6; 
-    display: flex; justify-content: center; align-items: center;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+
     z-index: 9999;
     transition: opacity 0.5s ease; 
 }
@@ -90,6 +95,9 @@ body {
     border-radius: 8px;
     text-transform: capitalize;
     cursor:pointer;
+    display: flex;
+    align-items: center;
+    gap:8px;
 }
 .WeatherAppContainer {
     /* background-color: rgba(172, 255, 47, 0.293); */
@@ -307,7 +315,7 @@ body {
 }
 
 #TodayDetailedInfo .HourByHourInfo, #NextDaysPrediction .DayByDayInfo{
-    background-color: #030060;
+    background-color: #0e548d;
     padding:16px;
     border-radius: 16px;
     display:flex;
@@ -329,7 +337,7 @@ body {
     
 }
 #UVIndex, #HumiditySection, #VisibilitySection, #DewPointSection{
-    background-color: rgba(255, 255, 255, 0.123);
+    background-color: rgba(0, 0, 0, 0.247);
     width:30%;
     min-width: 300px;
     padding:36px 18px;
@@ -350,10 +358,16 @@ body {
     font-size: 28px;
     font-weight: 500;
 }
-#VisibilitySection p, #DewPointSection p{
+#VisibilityValue, #DewPointValue{
     font-size: 56px;
     font-weight: 500;
     margin:0;
+}
+#VisibilityDescription, #DewPointDescription {
+    font-size:28px;
+    font-weight: 500;
+    margin:0;
+    text-transform: capitalize;
 }
 #UVBar, #HumidityBar1{
     width:100%;
@@ -364,9 +378,9 @@ body {
     
     background-image: linear-gradient(90deg,
         #289500 0%,    /* Low */
-        #f7e400 25%,   /* Moderate */
-        #f85900 50%,   /* High */
-        #d8001d 75%,   /* Very High */
+        #f7e400 27.3%,   /* Moderate */
+        #f85900 54.6%,   /* High */
+        #d8001d 72.8%,   /* Very High */
         #6b49c8 100%   /* Extreme */);
     position:relative;
 }

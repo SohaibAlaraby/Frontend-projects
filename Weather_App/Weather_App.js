@@ -308,7 +308,7 @@ function prepareURL(city,baseURL){
         key: APIKey,
         q: city,
         days: 3,//fetch one day until finishing the ui
-        aqi: "no"
+        aqi: "yes"
 
     });
     return `${baseURL}${params}`;
@@ -392,15 +392,37 @@ function updateHumiditySection({current:{humidity}}){
 }
 
 function updateVisibilitySection({current:{vis_km,vis_miles}}, isCel){
-    const VisibilityValue = document.getElementById("VisibilityDescription");
+    const VisibilityValue = document.getElementById("VisibilityValue");
+    const VisibilityDescription = document.getElementById("VisibilityDescription");
     const value = isCel ? vis_km : vis_miles;
     const unit = isCel ? "km" : "miles";
     VisibilityValue.textContent = `${value} ${unit}`;
+    if(vis_km < 1) {
+        VisibilityDescription.textContent = 'very poor visibility  ';
+    } else if(vis_km < 4) {
+        VisibilityDescription.textContent = 'poor visibility';
+    } else if(vis_km < 10) {
+        VisibilityDescription.textContent = 'good Visibility';
+    } else if(vis_km >= 10) {
+        VisibilityDescription.textContent = 'clear view';
+    }
 }
 
 function updateDewPointSection({current:{dewpoint_c,dewpoint_f}}, isCel){
-    const DewPointValue = document.getElementById("DewPointDescription");
+    const DewPointValue = document.getElementById("DewPointValue");
+    const DewPointDescription = document.getElementById("DewPointDescription");
     const value = isCel ? dewpoint_c : dewpoint_f;
     const unit = isCel ? "°C" : "°F";
     DewPointValue.textContent = `${value} ${unit}`;
+    if(dewpoint_c < 10) {
+        DewPointDescription.textContent = 'dry and crisp air';
+    } else if(dewpoint_c < 16) {
+        DewPointDescription.textContent = 'pleasant and comfortable air';
+    } else if(dewpoint_c < 21) {
+        DewPointDescription.textContent = 'a bit humid and sticky air';
+    } else if(dewpoint_c < 24) {
+        DewPointDescription.textContent = 'uncomfortable and muggy air';
+    } else if (dewpoint_c >= 24) {
+        DewPointDescription.textContent = 'very oppressive and humid air!';
+    }
 }

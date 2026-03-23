@@ -21,7 +21,7 @@
 <body>
     <div id="loader">
         <div id ="spinner" class="spinner"></div> 
-        <button id="TryAgain" class="TryAgain hidden">Try Again<i class="fa-solid fa-arrows-rotate"></i></button>
+        <button id="TryAgain" class="TryAgain hidden"><span class="material-symbols-outlined">refresh</span>Try Again</button>
     </div>
     <div id="WeatherAppContainer" class="WeatherAppContainer hideWeatherAppContainer">
         <header id="WeatherAppHeader" class="WeatherAppHeader">
@@ -100,10 +100,12 @@
             <section id="VisibilitySection">
                 <h3><span class="material-symbols-outlined">visibility</span>Visibility</h3>
                 <p id="VisibilityDescription"></p>
+                <p id="VisibilityValue"></p>
             </section>
             <section id="DewPointSection">
                 <h3><span class="material-symbols-outlined">dew_point</span>Dew Point</h3>
                 <p id="DewPointDescription"></p>
+                <p id="DewPointValue"></p>
             </section>
 
         </main>
