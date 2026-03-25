@@ -336,7 +336,7 @@ body {
     width:30%;
     
 }
-#UVIndex, #HumiditySection, #VisibilitySection, #DewPointSection{
+#UVIndex, #HumiditySection, #VisibilitySection, #DewPointSection, #AQISection{
     background-color: rgba(0, 0, 0, 0.247);
     width:30%;
     min-width: 300px;
@@ -348,12 +348,12 @@ body {
     justify-content: space-between;
     
 }
-#UVIndex h3, #HumiditySection h3, #VisibilitySection h3,#DewPointSection h3{
+#UVIndex h3, #HumiditySection h3, #VisibilitySection h3,#DewPointSection h3, #AQISection h3{
     display:flex;
     align-items: center;
     gap: 4px;
 }
-#UVIndex p, #HumiditySection p{
+#UVIndex p, #HumiditySection p,#AQIState{
     text-transform: capitalize;
     font-size: 28px;
     font-weight: 500;
@@ -363,13 +363,13 @@ body {
     font-weight: 500;
     margin:0;
 }
-#VisibilityDescription, #DewPointDescription {
+#VisibilityDescription, #DewPointDescription, #AQIDescription {
     font-size:28px;
     font-weight: 500;
     margin:0;
     text-transform: capitalize;
 }
-#UVBar, #HumidityBar1{
+#UVBar, #HumidityBar1, #AQIBar1{
     width:100%;
     height: 20px;
     border-radius: 16px;
@@ -384,13 +384,40 @@ body {
         #6b49c8 100%   /* Extreme */);
     position:relative;
 }
-#HumidityBar1 {
+#HumidityBar1, #AQIBar1 {
     background-color: white;
 }
-#HumidityBar2{
+#HumidityBar2, #AQIBar2{
     height: 20px;
     border-radius: 16px;
+    
+}
+#HumidityBar2{
     background-color: rgb(0, 217, 255);
+}
+.AQIBar2_1 {
+    background-color:#00e100;
+    width:16.7%;
+}
+.AQIBar2_2 {
+    background-color:#ffff00;
+    width:33.33%;
+}
+.AQIBar2_3 {
+    background-color:#ff7e00;
+    width:50%;
+}
+.AQIBar2_4 {
+    background-color:#ff0000;
+    width:66.7%;
+}
+.AQIBar2_5 {
+    background-color:#8f3f97;
+    width:83.33%;
+}
+.AQIBar2_6 {
+    background-color:#7e0023;
+    width:100%;
 }
 #UVPointer{
     width:36px;

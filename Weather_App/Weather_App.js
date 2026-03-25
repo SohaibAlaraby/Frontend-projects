@@ -259,6 +259,7 @@ function updateWeatherDataInUI(data){
         updateHumiditySection(data);
         updateVisibilitySection(data, true);
         updateDewPointSection(data, true);
+        updateAQISection(data);
     }catch(error) {
         console.error("UI update error:",error);
     }
@@ -425,4 +426,26 @@ function updateDewPointSection({current:{dewpoint_c,dewpoint_f}}, isCel){
     } else if (dewpoint_c >= 24) {
         DewPointDescription.textContent = 'very oppressive and humid air!';
     }
+}
+
+function getAQIDetails(index) {
+    const AQI = {
+        1:{status:"good", color:"#00e100", general_advice:"great day for outdoor exercise!", sensitive_advice:"perfect air quality for everyone", icon:"🏃‍♂️‍➡️"},
+        2:{status:"moderate", color:"#ffff00", general_advice:"a good day to be outside", sensitive_advice:"limit prolonged outdoor exertion if you have asthma", icon:"🚶‍♂️‍➡️"},
+        3:{status:"unhealthy for sensitive groups", color:"#ff7e00", general_advice:"it's okay to be outside, but take breaks", sensitive_advice:"avoid outdoor activities. Stay indoors if possible", icon:"⚠️"},
+        4:{status:"unhealthy", color:"#ff0000", general_advice:"wear a mask if you're outside for long", sensitive_advice:"stay indoors with air purification on", icon:"😷"},
+        5:{status:"very unhealthy", color:"#8f3f97", general_advice:"avoid all outdoor physical activities", sensitive_advice:"strictly stay indoors. Dangerous for respiratory health.", icon:"🤢"},
+        6:{status:"hazardous", color:"#7e0023", general_advice:"dangerous for respiratory health", sensitive_advice:"dangerous for respiratory health", icon:"☠️"}
+    }
+    return AQI[index] || {status: "unknown", color:"#ccc", advice:"no data available!"};
+}
+
+function updateAQISection({current:{air_quality}}){
+    const {status, color, general_advice, sensitive_advice, icon} = getAQIDetails(air_quality["us-epa-index"]);
+    const {co, no2, o3, pm2_5, pm10, so2, 'us-epa-index':index} = air_quality;
+    const AQI_status = document.getElementById('AQIState'); 
+    const AQI_bar = document.getElementById('AQIBar2');
+    AQI_status.textContent = status;
+    AQI_bar.className = '';
+    AQI_bar.classList.add(`AQIBar2_${index}`);
 }
